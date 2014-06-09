@@ -2,10 +2,6 @@ import sys
 import pygame
 import  mario_END
 import mario_R
-import monsters
-import blocks
-import hero
-import blocks
 
 pygame.init()
  
@@ -121,24 +117,9 @@ class GameMenu():
  
     def run(self):
         mainloop = True
-
-
-        M =pygame.sprite.Group()
-
-        mn = monsters.Monster(100,450,2,0,150,0)
-        P = []
-        P.append(mn)
-        M.add(mn)
-
-
-
         while mainloop:
             # Limit frame speed to 50 FPS
             self.clock.tick(50)
-
-            screen.blit(mn.image, (50,250))
-            M.update(P)
-
  
             mpos = pygame.mouse.get_pos()
  
