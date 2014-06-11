@@ -125,7 +125,7 @@ def main():
                     bd = blocks.BlockDie(x,y)
                     entities.add(bd)
                     platforms.append(bd)
-                if col == "Z": #блок проверки
+                if col == "Z":
                     pr = blocks.Emblem(x,y)
                     entities.add(pr)
                     platforms.append(pr)
