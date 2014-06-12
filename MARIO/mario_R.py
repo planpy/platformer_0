@@ -147,7 +147,7 @@ def main():
     NFOn = 1
 
     Nmonsters = pygame.sprite.Group() # Все передвигающиеся объекты
-    mn1 = monsters.Monster(190,200,2,3,150,15)
+    mn1 = monsters.Monster(190,200,2,2,150,15)
 
     mn2 = monsters.Monster(344,511,0,1,0,150)
 

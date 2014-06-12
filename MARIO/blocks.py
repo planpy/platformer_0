@@ -11,8 +11,8 @@ ICON_DIR = os.path.dirname(__file__) #  Полный путь к каталог�
 
 
 ANIMATION_BLOCKTELEPORT = [
-            ('%s/blocks/portal2.png' % ICON_DIR),
-            ('%s/blocks/portal1.png' % ICON_DIR)]
+            ('%s/blocks/portal1.png' % ICON_DIR),
+            ('%s/blocks/portal2.png' % ICON_DIR)]
 
 
 class Platform(pygame.sprite.Sprite):
@@ -38,14 +38,17 @@ class BlockTeleport(Platform):
         self.goX = goX # координаты назначения перемещения
         self.goY = goY # координаты назначения перемещения
         boltAnim = []
+        """
         for anim in ANIMATION_BLOCKTELEPORT:
             boltAnim.append((anim, 0.3))
         self.boltAnim = pyganim.PygAnimation(boltAnim)
         self.boltAnim.play()
-
+        """
+        self.image = pygame.image.load("%s/blocks/222.png" % ICON_DIR)
     def update(self):
-        self.image.fill(pygame.Color(PLATFORM_COLOR))
-        self.boltAnim.blit(self.image, (0, 0))
+        #self.image.fill(pygame.Color(PLATFORM_COLOR))
+        # self.boltAnim.blit(self.image, (0, 0))
+        self.image = pygame.image.load("%s/blocks/222.png" % ICON_DIR)
 
 class Emblem(Platform):
     def __init__(self, x, y):
