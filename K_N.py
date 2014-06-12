@@ -1,10 +1,9 @@
-from tkinter import Tk, Button
-#from tkFont import font
-from tkinter import font
 from copy import deepcopy
- 
+from tkinter import Tk, Button
+from tkinter.font import Font
+
 class Board:
- 
+
   def __init__(self,other=None):
     self.player = 'X'
     self.opponent = 'O'
@@ -17,13 +16,13 @@ class Board:
     # copy constructor
     if other:
       self.__dict__ = deepcopy(other.__dict__)
- 
+
   def move(self,x,y):
     board = Board(self)
     board.fields[x,y] = board.player
     (board.player,board.opponent) = (board.opponent,board.player)
     return board
- 
+
   def __minimax(self, player):
     if self.won():
       if player:
@@ -48,16 +47,16 @@ class Board:
           if value<best[0]:
             best = (value,(x,y))
       return best
- 
+
   def best(self):
     return self.__minimax(True)[1]
- 
+
   def tied(self):
     for (x,y) in self.fields:
       if self.fields[x,y]==self.empty:
         return False
     return True
- 
+
   def won(self):
     # horizontal
     for y in range(self.size):
@@ -93,7 +92,7 @@ class Board:
       return winning
     # default
     return None
- 
+
   def __str__(self):
     string = ''
     for y in range(self.size):
@@ -101,7 +100,7 @@ class Board:
         string+=self.fields[x,y]
       string+="\n"
     return string
- 
+
 class GUI:
  
   def __init__(self):
@@ -109,7 +108,7 @@ class GUI:
     self.app.title('TicTacToe')
     self.app.resizable(width=False, height=False)
     self.board = Board()
-    self.font = "Helvetica"
+    self.font = Font(family="Helvetica", size=32)
     self.buttons = {}
     for x,y in self.board.fields:
       handler = lambda x=x,y=y: self.move(x,y)
