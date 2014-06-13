@@ -285,9 +285,9 @@ class GUI:
   def __init__(self):
     self.app = Tk()
     self.app.title('Connect4')
-    self.app.resizable(width=False, height=False)
-    self.board = Board()
-    self.buttons = {}
+    self.app.resizable(width=False, height=False) #нельзя изменить размеры
+    self.board = Board() #класс ИИ
+    self.buttons = {} #словарь кнопок
     self.frame = Frame(self.app, borderwidth=1, relief="raised")
     self.tiles = {}
     for x in range(self.board.width):
@@ -305,7 +305,7 @@ class GUI:
     self.restart.grid(row=2, column=0, columnspan=self.board.width, sticky="WE")
     self.update()
  
-  def reset(self):
+  def reset(self): #сброс игры
     self.board = Board()
     self.update()
  
@@ -320,15 +320,15 @@ class GUI:
       self.update()
     self.app.config(cursor="")
  
-  def update(self):
-    for (x,y) in self.board.fields:
+  def update(self): #обновляем изображения
+    for (x,y) in self.board.fields: #выдача переменных для закраски
       text = self.board.fields[x,y]
       if (text=='.'):
-        self.tiles[x,y].create_oval(10, 5, 50, 45, fill="black", outline="blue", width=1)
+        self.tiles[x,y].create_oval(10, 5, 50, 45, fill="black", outline="blue", width=1)  #закраска выиграша фишек
       if (text=='X'):
-        self.tiles[x,y].create_oval(10, 5, 50, 45, fill="yellow", outline="blue", width=1)
+        self.tiles[x,y].create_oval(10, 5, 50, 45, fill="yellow", outline="blue", width=1) #ход ИИ
       if (text=='O'):
-        self.tiles[x,y].create_oval(10, 5, 50, 45, fill="red", outline="blue", width=1)
+        self.tiles[x,y].create_oval(10, 5, 50, 45, fill="red", outline="blue", width=1) #ход игрока
     for x in range(self.board.width):
       if self.board.fields[x,self.board.height-1]==self.board.empty:
         self.buttons[x]['state'] = 'normal'
@@ -344,5 +344,5 @@ class GUI:
   def mainloop(self):
     self.app.mainloop()
  
-if __name__ == '__main__':
+if __name__ == '__main__': #запуск программы
   GUI().mainloop()
