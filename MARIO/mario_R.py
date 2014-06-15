@@ -159,6 +159,9 @@ def main():
     platforms.append(mn2)
     Nmonsters.add(mn2)
 
+    pygame.joystick.init()
+
+
     while not player.winner: # основной цикл программы
         timer.tick(60)
 
@@ -175,7 +178,7 @@ def main():
         for e in pygame.event.get(): # обрабатываем события
             if e.type == pygame.QUIT:
                 sys.exit()
-            if e.type ==  pygame.KEYDOWN and e.key ==   pygame.K_LEFT:
+            if e.type ==  pygame.KEYDOWN and e.key ==   pygame.K_LEFT :
                left = True
             if e.type ==   pygame.KEYDOWN and e.key ==   pygame.K_RIGHT:
                right = True
@@ -183,9 +186,9 @@ def main():
                right = False
             if e.type ==   pygame.KEYUP and e.key ==  pygame.K_LEFT:
                 left = False
-            if e.type == pygame.KEYDOWN and e.key == pygame.K_UP:
+            if e.type == pygame.KEYDOWN and e.key == pygame.K_UP or e.type == pygame.JOYBUTTONDOWN:
                 up = True
-            if e.type == pygame.KEYUP and e.key == pygame.K_UP:
+            if e.type == pygame.KEYUP and e.key == pygame.K_UP or e.type == pygame.JOYBUTTONUP:
                 up = False
             if e.type == pygame.KEYDOWN and e.key == pygame.K_LSHIFT:
                 running = True
