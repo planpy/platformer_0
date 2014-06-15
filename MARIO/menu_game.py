@@ -1,7 +1,6 @@
 import sys
 import pygame
-import  mario_END
-import mario_R
+
 
 pygame.init()
  
@@ -152,8 +151,8 @@ class GameMenu():
  
 if __name__ == "__main__":
     def start_game():
-        mario_R.main()
- 
+        print("Hello World!")
+
     # Creating the screen
     screen = pygame.display.set_mode((900, 500), 0, 32)
  
